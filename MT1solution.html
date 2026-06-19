@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Even/Odd & Loop Tool</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; line-height: 1.6; }
+        .container { max-width: 400px; border: 1px solid #ddd; padding: 20px; border-radius: 8px; }
+        input { padding: 8px; width: 100px; margin-bottom: 10px; }
+        button { padding: 8px 15px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 4px; }
+        button:hover { background-color: #0056b3; }
+        #results { margin-top: 20px; padding-top: 15px; border-top: 2px solid #eee; }
+        .highlight { font-weight: bold; color: #d9534f; }
+    </style>
+</head>
+<body>
+ 
+<div class="container">
+    <h2>Number Checker</h2>
+    <p>Enter a number to see if it's even or odd, and generate a list.</p>
+    
+    <input type="number" id="userInput" placeholder="Enter a number">
+    <button onclick="processNumber()">Check & Loop</button>
+
+    <div id="results">
+        <p id="parityResult"></p>
+        <p id="loopResult"></p>
+    </div>
+</div>
+
+<script>
+    function processNumber() {
+       
+        const inputVal = document.getElementById('userInput').value;
+        const num = parseInt(inputVal);
+
+        const parityDisplay = document.getElementById('parityResult');
+        const loopDisplay = document.getElementById('loopResult');
+
+        if (isNaN(num)) {
+            parityDisplay.innerHTML = "Please enter a valid number.";
+            loopDisplay.innerHTML = "";
+            return;
+        }
+
+        if (num % 2 === 0) {
+            parityDisplay.innerHTML = `The number ${num} is <span class="highlight">Even</span>.`;
+        } else {
+            parityDisplay.innerHTML = `The number ${num} is <span class="highlight">Odd</span>.`;
+        }
+
+        let sequence = "<strong>Sequence:</strong> ";
+        for (let i = 1; i <= num; i++) {
+            sequence += i + (i < num ? ", " : "");
+        }
+        
+        loopDisplay.innerHTML = sequence;
+    }
+</script>
+
+</body>
+</html>
