@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz App</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #eef;
+            padding: 20px;
+        }
+        .quiz-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            background: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-box">
+    <h2>Quiz</h2>
+
+    <p>1. What is HTML?</p>
+    <label><input type="radio" name="q1" value="0"> Programming Language</label>
+    <label><input type="radio" name="q1" value="1"> Markup Language</label>
+    <label><input type="radio" name="q1" value="0"> Database</label>
+
+    <p>2. What does CSS stand for?</p>
+    <label><input type="radio" name="q2" value="0"> Computer Style Sheets</label>
+    <label><input type="radio" name="q2" value="1"> Cascading Style Sheets</label>
+    <label><input type="radio" name="q2" value="0"> Colorful Style Sheets</label>
+
+    <button onclick="checkScore()">Submit</button>
+
+    <p id="result"></p>
+</div>
+
+<script>
+function checkScore() {
+    let score = 0;
+
+    let q1 = document.querySelector('input[name="q1"]:checked');
+    let q2 = document.querySelector('input[name="q2"]:checked');
+
+    if (q1) score += Number(q1.value);
+    if (q2) score += Number(q2.value);
+
+    document.getElementById("result").innerText = "Your Score: " + score;
+}
+</script>
+
+</body>
+</html>
